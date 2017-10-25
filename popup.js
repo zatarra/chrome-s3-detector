@@ -9,5 +9,6 @@ window.addEventListener('load', function() {
 function cleanup() {
 	    document.getElementById("links").innerHTML = '';
 	        localStorage.clear();
+    chrome.runtime.sendMessage({ "resetIcon" : true});
 }
 document.getElementById("myBtn").addEventListener("click", cleanup);
