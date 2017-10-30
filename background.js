@@ -15,7 +15,7 @@ chrome.webRequest.onErrorOccurred.addListener(function(details) {
     if (!navigator.onLine)
         return
 
-    if (details.error == "net::ERR_NAME_NOT_RESOLVED" && !checkIfExists(details.url)) {
+    if (details.error == "net::ERR_NAME_NOT_RESOLVED" && !checkIfExists(details.url) && details.url.match(/[a-z0-9\-]+\.[a-z]+/i)) {
         createPopup('Unused domain', details);
         chrome.browserAction.setIcon({path:"iconNew.png"});
     }
